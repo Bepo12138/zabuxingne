@@ -1,0 +1,54 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="online.Gx.simpleweather">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <activity android:name="online.Gx.simpleweather.activity.WeatherActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="online.Gx.simpleweather.activity.ChooseAreaActivity"/>
+        <activity android:name="online.Gx.simpleweather.activity.SettingActivity"/>
+        <activity android:name="online.Gx.simpleweather.activity.AboutActivity"/>
+        <activity android:name="online.Gx.simpleweather.activity.WelcomeActivity"/>
+        <activity android:name="online.Gx.simpleweather.activity.FeedBackACtivity"/>
+        <activity
+            android:name="online.Gx.simpleweather.activity.ChooseThemeActivity"
+            android:theme="@style/FloatActivity"/>
+
+        <service android:name="online.Gx.simpleweather.service.AutoUpdateService"/>
+        <service android:name="online.Gx.simpleweather.service.TimerService"/>
+
+        <receiver android:name="online.Gx.simpleweather.receiver.AutoUpdateReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="online.Gx.simpleweather.provider.WidgetProvider">
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_1_config"/>
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="online.Gx.simpleweather.MY_WIDGETPROVIDER_BROADCAST"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+
+    </application>
+
+</manifest>
